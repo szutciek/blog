@@ -8,7 +8,7 @@
         :id="slide._id"
       >
         <div class="background">
-          <nuxt-img
+          <img
             v-if="slide.backgroundType === 'img'"
             :src="slide.backgroundSrc"
             :alt="slide.title"

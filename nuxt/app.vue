@@ -47,7 +47,7 @@ useState("homeSlides", () => {
         },
         {
           content: "City",
-          background: "#7de059",
+          background: "#7fe979",
         },
       ],
 

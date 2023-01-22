@@ -41,9 +41,12 @@ export class Slideshow {
       document
         .getElementById(`${this.slides[this.currentSlide]._id}_title`)
         .animate(
-          [{ transform: "translateY(40px)" }, { transform: "translateY(0)" }],
+          [
+            { transform: "translateY(80px)", opacity: 0.33 },
+            { transform: "translateY(0)", opacity: 1 },
+          ],
           {
-            duration: 1400,
+            duration: 1200,
             delay: delayCoefficient * 60 + 300,
             fill: "both",
             easing: "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -52,9 +55,9 @@ export class Slideshow {
       document
         .getElementById(`${this.slides[this.currentSlide]._id}_description`)
         .animate(
-          [{ transform: "translateY(40px)" }, { transform: "translateY(0)" }],
+          [{ transform: "translateY(60px)" }, { transform: "translateY(0)" }],
           {
-            duration: 2000,
+            duration: 2200,
             delay: delayCoefficient * 60 + 300,
             fill: "both",
             easing: "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -63,8 +66,8 @@ export class Slideshow {
       document
         .getElementById(`${this.slides[this.currentSlide]._id}_tags`)
         .animate([{ opacity: 0 }, { opacity: 1 }], {
-          duration: 2000,
-          delay: delayCoefficient * 60 + 400,
+          duration: 1500,
+          delay: delayCoefficient * 60 + 500,
           fill: "both",
           easing: "cubic-bezier(0.16, 1, 0.3, 1)",
         });

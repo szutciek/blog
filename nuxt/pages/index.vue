@@ -248,7 +248,7 @@ onBeforeUnmount(() => {
 .content p {
   font-size: 1.2rem;
   font-weight: 400;
-  line-height: 100%;
+  line-height: 110%;
   color: #b8b8b8;
   margin-top: 1rem;
   max-width: 60vw;

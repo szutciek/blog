@@ -10,36 +10,10 @@
 useState("homeSlides", () => {
   return [
     {
-      _id: "832kdsa",
-      title: "I'm in my moms car",
-      description:
-        "Rating the new Apple quad (with sticker and charger included in the box).",
-      tags: [
-        {
-          content: "Vehicles",
-          background: "#53e6c4",
-        },
-        {
-          content: "Tech",
-          background: "#3a70d3",
-        },
-      ],
-      backgroundType: "vid",
-      backgroundSrc: "https://blog.kanapka.eu/assets/images/videoQuad2245.mp4",
-
-      author: {
-        name: "Kanapkador",
-        profile: "https://kanapka.eu/assets/maciej.jpg",
-        roles: ["Web Developer", "Creator"],
-      },
-
-      duration: 4000,
-      currentTime: 0,
-    },
-    {
       _id: "59403jfisdo",
-      title: "Warsaw in review",
-      description: "I review Warsaw as a experienced resident.",
+      title: "Taking a random picture of Warsaw",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos debitis delectus, ad porro ea impedit necessitatibus tempore quaerat modi accusantium!",
       tags: [
         {
           content: "Warsaw",
@@ -61,6 +35,33 @@ useState("homeSlides", () => {
       },
 
       duration: 5000,
+      currentTime: 0,
+    },
+    {
+      _id: "832kdsa",
+      title: "Talibans supercar",
+      description:
+        "Rating the new taliban quad (with sticker and charger included in the box).",
+      tags: [
+        {
+          content: "Vehicles",
+          background: "#53e6c4",
+        },
+        {
+          content: "Tech",
+          background: "#3a70d3",
+        },
+      ],
+      backgroundType: "vid",
+      backgroundSrc: "https://blog.kanapka.eu/assets/images/videoQuad2245.mp4",
+
+      author: {
+        name: "Kanapkador",
+        profile: "https://kanapka.eu/assets/maciej.jpg",
+        roles: ["Web Developer", "Creator"],
+      },
+
+      duration: 4000,
       currentTime: 0,
     },
     {
@@ -120,9 +121,9 @@ useState("homeSlides", () => {
     },
     {
       _id: "jidosa45d32",
-      title: "Creating a new system for McDonalds",
+      title: "McDonalds x KFC system",
       description:
-        "I spent a lot of time coding a new solution for the huge corporation named McDonalds.",
+        "Due to McDonalds taking over KFC a new solution is needed for the huge corporation. I decided to take this challenge at an attempt to increase my Computer Science grade.",
       tags: [
         {
           content: "Programming",

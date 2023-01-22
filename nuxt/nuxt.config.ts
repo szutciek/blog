@@ -18,5 +18,10 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: "page", mode: "out-in" },
     layoutTransition: { name: "layout", mode: "out-in" },
+
+    // modules: ["@nuxt/image"],
+    // image: {
+    //   domains: ["assets.kanapka.eu", "blog.kanapka.eu"],
+    // },
   },
 });

@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-useState("homeSlides", () => {
+useState("loadedArticles", () => {
   return [
     {
       _id: "59403jfisdo",
@@ -218,9 +218,6 @@ body {
   font-display: fallback;
 }
 
-
-
-
 @font-face {
   font-family: "Poppins";
   font-weight: 900;
@@ -258,33 +255,18 @@ body {
   max-width: 1000px;
 }
 
-.hugeF {
-  font-size: 3rem !important;
-}
-.largeF {
-  font-size: 1.5rem !important;
-}
-.mediumF {
-  font-size: 1rem !important;
-}
-.smallF {
-  font-size: 0.75rem !important;
-}
+/* STYLES TO MAKE TRANSITIONS WORK */
+.headFull {
+  position: relative;
 
-.eBoldW {
-  font-weight: 900 !important;
-}
-.boldW {
-  font-weight: 800 !important;
-}
-.semiBoldW {
-  font-weight: 700 !important;
-}
-.mediumW {
-  font-weight: 500 !important;
-}
-.regularW {
-  font-weight: 400 !important;
+  margin: 1rem;
+  margin-top: 64px;
+
+  width: calc(100% - 2rem);
+  height: calc(100vh - 64px - 1rem);
+
+  overflow: hidden;
+  border-radius: 1rem;
 }
 
 .maxLineText {

@@ -20,7 +20,7 @@ export class Slideshow {
   lastTime = new Date().getTime();
 
   getSlideElement(id) {
-    return document.getElementById(id);
+    if (!process.server) return document.getElementById(id);
   }
 
   slideOut(id, delayCoefficient = 0) {
@@ -47,7 +47,7 @@ export class Slideshow {
           ],
           {
             duration: 1200,
-            delay: delayCoefficient * 60 + 300,
+            delay: delayCoefficient * 60 + (delayCoefficient !== 0 ? 300 : 0),
             fill: "both",
             easing: "cubic-bezier(0.16, 1, 0.3, 1)",
           }
@@ -58,7 +58,7 @@ export class Slideshow {
           [{ transform: "translateY(60px)" }, { transform: "translateY(0)" }],
           {
             duration: 2200,
-            delay: delayCoefficient * 60 + 300,
+            delay: delayCoefficient * 60 + (delayCoefficient !== 0 ? 300 : 0),
             fill: "both",
             easing: "cubic-bezier(0.16, 1, 0.3, 1)",
           }
@@ -67,7 +67,7 @@ export class Slideshow {
         .getElementById(`${this.slides[this.currentSlide]._id}_tags`)
         .animate([{ opacity: 0 }, { opacity: 1 }], {
           duration: 1500,
-          delay: delayCoefficient * 60 + 500,
+          delay: delayCoefficient * 60 + (delayCoefficient !== 0 ? 500 : 0),
           fill: "both",
           easing: "cubic-bezier(0.16, 1, 0.3, 1)",
         });
@@ -138,7 +138,11 @@ export class Slideshow {
       this.interval = setInterval(() => {
         if (this.autoSpin)
           lastTime = this.slideProgress(this.currentSlide, lastTime);
-        else lastTime = new Date().getTime();
+        if (this.slides[this.currentSlide].backgroundType === "vid") {
+          this.slides[this.currentSlide].videoTime = document.getElementById(
+            `${this.slides[this.currentSlide]._id}_background`
+          ).currentTime;
+        } else lastTime = new Date().getTime();
       }, 1000 / 30);
     }
   }

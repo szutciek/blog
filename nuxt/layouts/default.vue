@@ -18,9 +18,11 @@
       </div>
     </header>
     <!-- OUTPUT PAGE CONTENT -->
-    <div>
-      <slot />
-    </div>
+    <Transition>
+      <div>
+        <slot />
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -95,7 +97,14 @@ nav a {
 nav a:hover {
   background-color: #f6f6f6;
 }
-/* .router-link-exact-active {
-  border-bottom: 2px solid rgb(88, 88, 88);
-} */
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>

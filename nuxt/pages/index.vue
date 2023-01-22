@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="head">
+    <div class="headFull">
       <div
         class="slide"
         v-for="slide of slideshow.slides"
@@ -22,13 +22,15 @@
             :id="`${slide._id}_background`"
           />
         </div>
-        <div class="content">
+        <div class="headFullContent">
           <div class="bottom">
             <NuxtLink
               :to="`@${slide.author?.name}/posts/${slide.title.replaceAll(
                 ' ',
                 '_'
-              )}`"
+              )}${
+                slide.backgroundType === 'vid' ? `?t=${slide.videoTime}` : ''
+              }`"
             >
               <h1 :id="`${slide._id}_title`">
                 {{ slide.title }}
@@ -51,7 +53,7 @@
           </div>
           <NuxtLink :to="`/@${slide.author?.name}`">
             <div class="author">
-              <img :src="slide.author?.profile" alt="slide.author?.name" />
+              <img :src="slide.author?.profile" :alt="slide.author?.name" />
               <div>
                 <h2>{{ slide.author?.name }}</h2>
                 <ul>
@@ -82,8 +84,7 @@
 
 <script setup>
 import { onBeforeUnmount } from "vue";
-
-const slides = useState("homeSlides");
+const slides = useState("loadedArticles");
 
 const slideshow = ref(new Slideshow(slides.value));
 
@@ -132,19 +133,6 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-.head {
-  position: relative;
-
-  margin: 1rem;
-  margin-top: 64px;
-
-  width: calc(100% - 2rem);
-  height: calc(100vh - 64px - 1rem);
-
-  overflow: hidden;
-  border-radius: 1rem;
-}
-
 .slide {
   position: absolute;
 
@@ -159,7 +147,22 @@ onBeforeUnmount(() => {
   transform: translateX(0) !important;
 }
 
-.content {
+.animate {
+  animation: slideIn 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0 forwards;
+}
+
+@keyframes slidein {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+</style>
+
+<style>
+.headFullContent {
   position: relative;
   height: 100%;
   width: 100%;
@@ -171,7 +174,43 @@ onBeforeUnmount(() => {
 
   background-image: linear-gradient(transparent, #00000072, #000000);
 }
-.content .author {
+.headFullContent h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 100%;
+  color: white;
+}
+.headFullContent a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.headFullContent p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 110%;
+  color: #b8b8b8;
+  margin-top: 1rem;
+  max-width: 60vw;
+}
+
+.headFullContent .tagList {
+  display: flex;
+  gap: 0.75rem;
+  list-style: none;
+  margin-top: 3rem;
+}
+.headFullContent .tagList li {
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.headFullContent .tagList li a {
+  color: black;
+}
+
+.headFullContent .author {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -186,14 +225,14 @@ onBeforeUnmount(() => {
   cursor: pointer;
   transition: 0.1s;
 }
-.content .author:hover {
+.headFullContent .author:hover {
   background-color: #3a3a3a1a;
   backdrop-filter: blur(20px);
 }
-.content .author:hover img {
+.headFullContent .author:hover img {
   filter: grayscale(0);
 }
-.content .author h2 {
+.headFullContent .author h2 {
   color: white;
   font-size: 0.95rem;
   font-weight: 400;
@@ -201,12 +240,12 @@ onBeforeUnmount(() => {
   margin-bottom: 0.35rem;
 }
 
-.content .author ul {
+.headFullContent .author ul {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.content .author li {
+.headFullContent .author li {
   list-style: none;
   font-size: 0.8rem;
   font-weight: 300;
@@ -214,10 +253,10 @@ onBeforeUnmount(() => {
   line-height: 100%;
   position: relative;
 }
-.content .author li:first-child::after {
+.headFullContent .author li:first-child::after {
   display: none;
 }
-.content .author li::after {
+.headFullContent .author li::after {
   content: "";
   position: absolute;
   top: 0.25rem;
@@ -228,46 +267,12 @@ onBeforeUnmount(() => {
   border-radius: 50%;
   background-color: #a6a6a6;
 }
-.content .author img {
+.headFullContent .author img {
   width: 40px;
   height: 40px;
   object-fit: cover;
   border-radius: 50%;
   filter: grayscale(1);
-}
-.content h1 {
-  font-size: 4rem;
-  font-weight: 700;
-  line-height: 100%;
-  color: white;
-  cursor: pointer;
-}
-.content a {
-  text-decoration: none;
-}
-.content p {
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 110%;
-  color: #b8b8b8;
-  margin-top: 1rem;
-  max-width: 60vw;
-}
-.content .tagList {
-  display: flex;
-  gap: 0.75rem;
-  list-style: none;
-  margin-top: 3rem;
-}
-.content .tagList li {
-  padding: 0.25rem 0.65rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-.content .tagList li a {
-  color: black;
 }
 
 .background {
@@ -288,18 +293,5 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.animate {
-  animation: slideIn 0.5s cubic-bezier(0.76, 0, 0.24, 1) 0 forwards;
-}
-
-@keyframes slidein {
-  from {
-    transform: translateY(20px);
-  }
-  to {
-    transform: translateY(0);
-  }
 }
 </style>

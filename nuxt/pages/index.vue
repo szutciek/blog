@@ -29,7 +29,9 @@
                 ' ',
                 '_'
               )}${
-                slide.backgroundType === 'vid' ? `?t=${slide.videoTime}` : ''
+                slide.backgroundType === 'vid'
+                  ? `?t=${Math.floor(slide.percentage * 10) / 10}`
+                  : ''
               }`"
             >
               <h1 :id="`${slide._id}_title`">
@@ -84,6 +86,7 @@
 
 <script setup>
 import { onBeforeUnmount } from "vue";
+
 const slides = useState("loadedArticles");
 
 const slideshow = ref(new Slideshow(slides.value));
@@ -162,6 +165,19 @@ onBeforeUnmount(() => {
 </style>
 
 <style>
+.headFull {
+  position: relative;
+
+  margin: 1rem;
+  margin-top: var(--nav-height);
+
+  width: calc(100% - 2rem);
+  height: calc(100vh - var(--nav-height) - 1rem);
+
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
 .headFullContent {
   position: relative;
   height: 100%;

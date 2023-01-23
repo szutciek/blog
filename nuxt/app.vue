@@ -7,6 +7,13 @@
 </template>
 
 <script setup>
+// definePageMeta({
+//   // layout: "default",
+//   pageTransition: {
+//     name: "blur",
+//   },
+// });
+
 useState("loadedArticles", () => {
   return [
     {
@@ -33,6 +40,7 @@ useState("loadedArticles", () => {
         profile: "https://kanapka.eu/assets/maciej.jpg",
         roles: ["Web Developer", "Creator"],
       },
+      date: 1674512539179,
 
       duration: 5000,
       currentTime: 0,
@@ -60,6 +68,7 @@ useState("loadedArticles", () => {
         profile: "https://kanapka.eu/assets/maciej.jpg",
         roles: ["Web Developer", "Creator"],
       },
+      date: 1674512539179,
 
       duration: 4000,
       currentTime: 0,
@@ -84,6 +93,7 @@ useState("loadedArticles", () => {
         profile: "https://kanapka.eu/assets/maciej.jpg",
         roles: ["Web Developer", "Creator"],
       },
+      date: 1674512539179,
 
       duration: 4000,
       currentTime: 0,
@@ -115,6 +125,7 @@ useState("loadedArticles", () => {
         profile: "https://kanapka.eu/assets/maciej.jpg",
         roles: ["Web Developer", "Creator"],
       },
+      date: 1674512539179,
 
       duration: 4000,
       currentTime: 0,
@@ -139,13 +150,14 @@ useState("loadedArticles", () => {
         profile: "https://kanapka.eu/assets/maciej.jpg",
         roles: ["Web Developer", "Creator"],
       },
+      date: 1674512539179,
 
       duration: 5000,
       currentTime: 0,
     },
     {
       _id: "02384joisa",
-      title: "Getting a #1 Victory Royale",
+      title: "Getting a 1 Victory Royale",
       description: "Playing Fortnite and getting that shiny crown & glider.",
       tags: [
         {
@@ -162,6 +174,7 @@ useState("loadedArticles", () => {
         profile: "https://kanapka.eu/assets/maciej.jpg",
         roles: ["Web Developer", "Creator"],
       },
+      date: 1674512539179,
 
       duration: 35 * 1000,
       currentTime: 0,
@@ -187,6 +200,8 @@ useState("userPage", () => {
 
   --font-color: #1e1e1e;
   --background-color: white;
+
+  --nav-height: 64px
 }
 
 ::-webkit-scrollbar {
@@ -285,4 +300,13 @@ body {
   line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
+/* .page-enter-active,
+.page-leave-active {
+  transition:  0.33s;
+}
+.page-enter-from,
+.page-leave-to {
+  filter: blur(5px);
+} */
 </style>

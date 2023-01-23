@@ -18,11 +18,9 @@
       </div>
     </header>
     <!-- OUTPUT PAGE CONTENT -->
-    <Transition>
-      <div>
-        <slot />
-      </div>
-    </Transition>
+    <div>
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -96,15 +94,5 @@ nav a {
 }
 nav a:hover {
   background-color: #f6f6f6;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.2s ease-in-out;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
 }
 </style>

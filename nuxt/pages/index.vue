@@ -30,7 +30,7 @@
                 '_'
               )}${
                 slide.backgroundType === 'vid'
-                  ? `?t=${Math.floor(slide.percentage * 10) / 10}`
+                  ? `?t=${Math.floor(slide.videoTime * 10) / 10}`
                   : ''
               }`"
             >

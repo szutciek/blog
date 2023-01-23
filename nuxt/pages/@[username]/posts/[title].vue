@@ -134,6 +134,8 @@ const playVidTime = () => {
   if (video) {
     video.currentTime = Number(route.query.t) || 0;
     video.play();
+    // clear param to make link shorter
+    router.replace({ query: null });
     return true;
   }
   return false;

@@ -6,6 +6,7 @@ export class Slideshow {
   constructor(slides) {
     slides.forEach((slide, i) => {
       slide.percentage = ref(0);
+      slide.videoTime = ref(0);
       this.slides.push(slide);
     });
 
@@ -143,6 +144,10 @@ export class Slideshow {
             `${this.slides[this.currentSlide]._id}_background`
           ).currentTime;
         } else lastTime = new Date().getTime();
+
+        if (this.slides[this.currentSlide].backgroundType === "vid") {
+          this.videoProgress(this.currentSlide);
+        }
       }, 1000 / 30);
     }
   }
@@ -166,6 +171,11 @@ export class Slideshow {
     clearInterval(this.interval);
   }
 
+  videoProgress(index) {
+    this.slides[index].videoTime = document.getElementById(
+      `${this.slides[index]._id}_background`
+    ).currentTime;
+  }
   slideProgress(index, last) {
     const time = new Date().getTime();
     this.slides[index].currentTime += time - last;
